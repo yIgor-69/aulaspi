@@ -21,19 +21,19 @@
 		</div>
 		<div>
 			<label>Nome:</label> <input type="text" th:field="*{nome}">
-			<p th:errors="*{nome}"></p>
+			<p th:errors="*{nome}" class="red-text"></p>
 		</div>
 		<div>
 			<label>Local:</label> <input type="text" th:field="*{local}">
-			<p th:errors="*{local}"></p>
+			<p th:errors="*{local}" class="red-text"></p>
 		</div>
 		<div>
-			<label>Data:</label> <input type="data" th:field="*{data}">
-			<p th:errors="*{data}"></p>
+			<label>Data:</label> <input type="date" th:field="*{data}">
+			<p th:errors="*{data}" class="red-text"></p>
 		</div>
 		<div>
 			<label>Horário:</label> <input type="time" th:field="*{horario}">
-			<p th:errors="*{time}"></p>
+			<p th:errors="*{horario}" class="red-text"></p>
 		</div>
 		<div>
 			<button class="waves-effect waves-light btn" type="submit">Salvar</button>

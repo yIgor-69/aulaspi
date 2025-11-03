@@ -47,25 +47,33 @@
 				<div class="card">
 					<div class="card-content">
 						<span class="card-title">Adicionar Convidado</span>
-						<form th:action="@{/eventos/{idEvento}(idEvento=${evento.id})}" method="post">
+						<form th:action="@{/eventos/{idEvento}(idEvento=${evento.id})}"
+							th:object="${convidado}" method="post">
+
+							<input type="hidden" th:field="*{id}" readonly="readonly">
+
 							<div>
-								<input type="hidden" name="id" th:value="${convidado.id}" readonly="readonly">
+								<label>Nome:</label> <input type="text" th:field="*{nome}">
+								<p th:errors="*{nome}" class="red-text"></p>
 							</div>
+
 							<div>
-								<label>Nome: </label> <input type="text" name="nome" th:value="${convidado.nome}">
+								<label>RG:</label> <input type="text" th:field="*{rg}">
+								<p th:errors="*{rg}" class="red-text"></p>
 							</div>
-							<div>
-								<label>RG: </label> <input type="text" name="rg" th:value="${convidado.rg}">
-							</div>
+
 							<div>
 								<button type="submit" class="btn">Salvar</button>
 								<button type="reset" class="btn">Limpar</button>
 							</div>
 						</form>
+
 					</div>
 				</div>
 			</div>
 		</div>
+
+		<p th:if="${mensagem}" th:text="${mensagem}"></p>
 
 		<div class="row">
 			<div class="col s12">
@@ -85,11 +93,11 @@
 									<td th:text="${c.id}">1</td>
 									<td th:text="${c.nome}">Bahia</td>
 									<td th:text="${c.rg}">123</td>
-									<td>
-										<a th:href="@{/eventos/{idEvento}/convidados/{idConvidado}/selecionar(idEvento=${evento.id}, idConvidado=${c.id})}"><i class="material-icons">edit</i></a>
-										<a th:href="@{/eventos/{idEvento}/convidados/{idConvidado}/remover(idEvento=${evento.id}, idConvidado=${c.id})}"><i class="material-icons">delete</i></a>
-
-									</td>
+									<td><a
+										th:href="@{/eventos/{idEvento}/convidados/{idConvidado}/selecionar(idEvento=${evento.id}, idConvidado=${c.id})}"><i
+											class="material-icons">edit</i></a> <a
+										th:href="@{/eventos/{idEvento}/convidados/{idConvidado}/remover(idEvento=${evento.id}, idConvidado=${c.id})}"><i
+											class="material-icons">delete</i></a></td>
 								</tr>
 							</tbody>
 						</table>
